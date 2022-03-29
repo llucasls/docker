@@ -2,11 +2,6 @@ In order to build a container using `mysql.yml` file:
 ```
 docker-compose -f mysql.yml up -d
 ```
-Rename the container into `mysql`:
-```
-docker ps	# to see a list of active containers
-docker container rename <container-name> mysql
-```
 
 For mysql in particular, there are a few comands to make it easier to use on the
 command line. First, edit the password on `mysql.yml` to one of your liking,
