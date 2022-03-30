@@ -4,6 +4,9 @@ services:
     image: mongo
     container_name: mongo
     restart: always
+    volumes:
+      - ~/.local/data/mongodb:/data/db
+      - ~/.config/nvim:/root/.config/nvim
     ports:
       - 27017:27017
   mongo-express:
