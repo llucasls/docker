@@ -7,6 +7,7 @@ services:
     volumes:
       - ~/.local/data/mongodb:/data/db
       - ~/.config/nvim:/root/.config/nvim
+      - ~/mongodb:/mongodb
     ports:
       - 27017:27017
   mongo-express:
