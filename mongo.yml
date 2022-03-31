@@ -13,6 +13,8 @@ services:
     ports:
       - 27017:27017
   mongo-express:
+    depends_on:
+      - mongo
     image: mongo-express
     container_name: mongo-express
     restart: always
