@@ -1,0 +1,31 @@
+version: "3.8"
+services:
+  mysql:
+    image: mysql:debian
+    container_name: mysql
+    restart: always
+    ports:
+      - 3006:3306
+    volumes:
+      - ~/mysql:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: 123456
+  mongo:
+    image: mongo:latest
+    container_name: mongo
+    restart: always
+    environment:
+      - BROWSERSLIST_IGNORE_OLD_DATA=1
+    volumes:
+      - ~/.local/data/mongodb:/data/db
+      - ~/mongodb:/mongodb
+    ports:
+      - 27017:27017
+  mongo-express:
+    depends_on:
+      - mongo
+    image: mongo-express
+    container_name: mongo-express
+    restart: always
+    ports:
+      - 8081:8081
