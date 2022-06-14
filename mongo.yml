@@ -8,9 +8,7 @@ services:
       - BROWSERSLIST_IGNORE_OLD_DATA=1
     volumes:
       - ~/.local/data/mongodb:/data/db
-      - ~/.config/nvim:/root/.config/nvim
       - ~/mongodb:/mongodb
-      - ~/projetos/mongodb-commerce:/commerce
     ports:
       - 27017:27017
   mongo-express:
