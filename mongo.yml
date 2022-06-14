@@ -1,7 +1,7 @@
 version: "3.8"
 services:
   mongo:
-    build: ./mongodb
+    image: mongo:latest
     container_name: mongo
     restart: always
     environment:
