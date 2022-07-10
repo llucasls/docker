@@ -9,7 +9,7 @@ services:
     volumes:
       - ~/mysql:/var/lib/mysql
     environment:
-      MYSQL_ROOT_PASSWORD: 123456
+      MYSQL_ROOT_PASSWORD: ${MYSQL_PASSWORD}
   mongo:
     image: mongo:latest
     container_name: mongo
