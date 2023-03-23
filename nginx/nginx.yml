@@ -1,0 +1,14 @@
+version: "3.3"
+services:
+  nginx:
+    build: .
+    container_name: nginx
+    restart: always
+    ports:
+      - 80:80
+    volumes:
+      - ${PWD}/templates:/etc/nginx/templates
+      - ${PWD}/sites-enabled:/etc/nginx/sites-enabled
+      - ${PWD}/sites-available:/etc/nginx/sites-available
+      - /etc/letsencrypt:/etc/letsencrypt
+      - ${WWW}:/usr/share/nginx/html
