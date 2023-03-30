@@ -1,0 +1,7 @@
+#!/bin/sh
+
+if [ -t 0 ]; then
+	exec docker container exec -it nodejs node "$@"
+else
+	exec docker container exec -i nodejs node "$@"
+fi
