@@ -1,0 +1,6 @@
+version: "3.2"
+services:
+  nodejs:
+    image: node:hydrogen-alpine
+    container_name: nodejs
+    restart: always
