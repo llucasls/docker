@@ -1,7 +1,35 @@
-#!/bin/sh
+#!/usr/bin/python3
+import sys
+import os
 
-if [ -t 0 ]; then
-	exec docker container exec -it nodejs node "$@"
-else
-	exec docker container exec -i nodejs node "$@"
-fi
+
+arguments = list(filter(lambda arg: arg.find("-") != 0, sys.argv))[1:]
+options = list(filter(lambda arg: arg.find("-") == 0, sys.argv))
+
+
+if len(arguments) > 1:
+    *arguments, script = arguments
+    options.append(*arguments)
+
+    with open(script, mode="r") as file:
+        os.dup2(file.fileno(), 0)
+
+    os.execvp("docker", ["docker", "container", "exec", "-i",
+                         "nodejs", "node", *options])
+elif len(arguments) == 1:
+    script = arguments[0]
+
+    with open(script, mode="r") as file:
+        os.dup2(file.fileno(), 0)
+
+    os.execvp("docker", ["docker", "container", "exec", "-i",
+                         "nodejs", "node", *options])
+else:
+    if sys.stdin.isatty():
+        # run interactively
+        os.execvp("docker", ["docker", "container", "exec", "-it",
+                             "nodejs", "node", *options])
+    else:
+        # run script from stdin
+        os.execvp("docker", ["docker", "container", "exec", "-i",
+                             "nodejs", "node", *options])
