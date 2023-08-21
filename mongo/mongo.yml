@@ -8,7 +8,7 @@ services:
       - BROWSERSLIST_IGNORE_OLD_DATA=1
     volumes:
       - ~/.local/data/mongodb:/data/db
-      - ~/mongodb:/mongodb
+      - ~/.local/share/mongodb:/mongodb
     ports:
       - 27017:27017
   mongo-express:
