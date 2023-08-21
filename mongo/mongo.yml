@@ -3,7 +3,7 @@ services:
   mongo:
     image: mongo:latest
     container_name: mongo
-    restart: always
+    restart: on-failure
     environment:
       - BROWSERSLIST_IGNORE_OLD_DATA=1
     volumes:
@@ -16,6 +16,6 @@ services:
       - mongo
     image: mongo-express
     container_name: mongo-express
-    restart: always
+    restart: on-failure
     ports:
       - 8081:8081
