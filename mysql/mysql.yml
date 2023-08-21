@@ -1,7 +1,7 @@
 version: "3.8"
 services:
   mysql:
-    image: mysql:debian
+    image: mysql:8.0-debian
     container_name: mysql
     restart: always
     ports:

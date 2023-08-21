@@ -1,7 +1,7 @@
 version: "3.8"
 services:
   mongo:
-    image: mongo:latest
+    image: mongo:7.0.0-jammy
     container_name: mongo
     restart: on-failure
     environment:
