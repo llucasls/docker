@@ -1,0 +1,7 @@
+version: "3.8"
+services:
+  debian:
+    build: .
+    container_name: debian
+    tty: true
+    restart: on-failure
